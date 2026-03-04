@@ -1,0 +1,30 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AppAvaliaAi" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="colorPrimary">@color/VerdeDosBotões</item>
+        <item name="colorSecondary">@color/VerdeDosBotões</item>
+        <item name="colorTertiary">@color/VerdeDosBotões</item>
+
+        <item name="colorOutline">@color/CinzaMaisClaro</item>
+        <item name="colorOnSurface">@color/TextoDosBotoes</item>
+        <item name="colorOnSurfaceVariant">@color/CinzaMaisClaro</item>
+
+    </style>
+    <style name="HelperTextSmall" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">10sp</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+    <style name="Theme.AppAvaliaAi" parent="Base.Theme.AppAvaliaAi"/>
+    <style name="CircleImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="CustomDatePickerDialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="colorPrimary">@color/VerdeDosBotões</item>
+        <item name="colorPrimaryVariant">@color/VerdeDosBotões</item>
+        <item name="colorAccent">@color/VerdeDosBotões</item>
+        <!-- COR DO TEXTO SOBRE O VERDE -->
+        <item name="colorOnPrimary">@color/TextoDosBotoes</item>
+    </style>
+</resources>

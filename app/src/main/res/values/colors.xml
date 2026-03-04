@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="erro_forte">#B00000</color>
+
+
+    <color name="VerdeDosBotões">#2AAD74</color>
+    <color name="TextoIcones">#1F4F4A</color>
+    <color name="TextoDosBotoes">#2E2E2E</color>
+    <color name="CinzaMaisClaro">#5A5A5A</color>
+    <color name="CinzaQuaseBranco">#EFEFEF</color>
+    <color name="CInzaBotaoCancelar">#DDE3E6</color>
+</resources>

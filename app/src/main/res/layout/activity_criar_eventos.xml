@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CriarEventos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".CriarEventosActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.10462287" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9" />
+
+        <!-- HEADER -->
+        <!--LInha DIVISóRIA-->
+        <View
+            android:id="@+id/divisorHeader"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/CinzaQuaseBranco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgUser" />
+        <!-- BOTÃO VOLTAR -->
+        <ImageButton
+            android:id="@+id/btnVoltar"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="22dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Voltar"
+            android:src="@drawable/ic_voltar"
+            app:layout_constraintEnd_toStartOf="@+id/tvTitulo"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideStart"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- TÍTULO -->
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="74dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="76dp"
+            android:text="Criar Eventos"
+            android:textColor="@color/TextoDosBotoes"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/imgUser"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnVoltar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- FOTO PERFIL -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgUser"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/VerdeDosBotões"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/empty_icon"
+            app:layout_constraintEnd_toStartOf="@+id/guideEnd"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvTitulo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/CircleImageView" />
+
+
+        <!-- INFORMAÇÕES DO EVENTO -->
+
+        <!-- Título do Bloco -->
+        <TextView
+            android:id="@+id/tvInfoEvento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Informações do Evento"
+            android:textColor="@color/TextoDosBotoes"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tvTitulo" />
+        <!--Linha Divisória-->
+        <View
+            android:id="@+id/divisorInformacoes"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/CinzaQuaseBranco"
+            app:layout_constraintStart_toStartOf="@+id/guideStart"
+            app:layout_constraintEnd_toEndOf="@+id/guideEnd"
+            app:layout_constraintTop_toBottomOf="@id/tvInfoEvento" />
+
+        <!-- Nome do Evento-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilNomeEvento"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Nome do Evento"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
+            app:errorTextColor="@color/erro_forte"
+            app:boxStrokeErrorColor="@color/erro_forte"
+            app:counterEnabled="true"
+            app:counterMaxLength="60"
+            app:layout_constraintEnd_toEndOf="@+id/guideEnd"
+            app:layout_constraintStart_toStartOf="@+id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tvInfoEvento">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNomeEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:maxLength="60"
+                android:textColor="@color/TextoDosBotoes"
+                android:textColorLink="@color/VerdeDosBotões" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Descrição do Evento -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDescricao"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Descrição do Evento (Opcional)"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="500"
+            app:layout_constraintEnd_toEndOf="@+id/guideEnd"
+            app:layout_constraintStart_toStartOf="@+id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tilNomeEvento">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDescricao"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:maxLength="500"
+                android:textColor="@color/TextoDosBotoes" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <!-- Botão de CAPA -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCapa"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:text="Adicionar Capa (Opcional)"
+            android:textAllCaps="false"
+            android:textColor="@color/VerdeDosBotões"
+            app:backgroundTint="@android:color/transparent"
+            app:cornerRadius="014dp"
+            app:icon="@drawable/ic_camera"
+            app:iconPadding="8dp"
+            app:iconTint="@color/VerdeDosBotões"
+            app:layout_constraintEnd_toEndOf="@+id/guideEnd"
+            app:layout_constraintStart_toStartOf="@+id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tilDescricao"
+            app:rippleColor="@color/VerdeDosBotões"
+            app:strokeColor="@color/VerdeDosBotões"
+            app:strokeWidth="2dp" />
+        <!--LInha DIVISóRIA Maior-->
+        <View
+            android:id="@+id/divisorPosInformacoes"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/CinzaQuaseBranco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnCapa" />
+
+        <!-- Data e Horário -->
+
+        <!-- Título do Bloco -->
+
+        <TextView
+            android:id="@+id/DataHorario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Data e Horário"
+            android:textColor="@color/TextoDosBotoes"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/divisorPosInformacoes" />
+
+        <!--Linha Divisória-->
+
+        <View
+            android:id="@+id/divisorDataHorario"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/CinzaQuaseBranco"
+            app:layout_constraintStart_toStartOf="@+id/guideStart"
+            app:layout_constraintEnd_toEndOf="@+id/guideEnd"
+            app:layout_constraintTop_toBottomOf="@id/DataHorario" />
+
+        <!-- Data do Evento-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDataEvento"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Data do Evento"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
+            app:errorTextColor="@color/erro_forte"
+            app:boxStrokeErrorColor="@color/erro_forte"
+            app:layout_constraintEnd_toEndOf="@+id/guideEnd"
+            app:layout_constraintStart_toStartOf="@+id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/divisorDataHorario">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDataEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:clickable="true"
+                android:textColor="@color/TextoDosBotoes"
+                android:textColorLink="@color/VerdeDosBotões" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Horario Inicial do Evento-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilHorarioInicial"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Horario Inicial"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
+            app:errorTextColor="@color/erro_forte"
+            app:boxStrokeErrorColor="@color/erro_forte"
+            app:layout_constraintEnd_toStartOf="@+id/tilHorarioFinal"
+            app:layout_constraintStart_toStartOf="@+id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tilDataEvento">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etHorarioInicial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:focusable="false"
+                android:clickable="true"
+                android:textColor="@color/TextoDosBotoes"
+                android:textColorLink="@color/VerdeDosBotões" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Horario Final do Evento-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilHorarioFinal"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="5dp"
+            android:hint="Horario Final"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
+            app:helperText="Se não preenchido será declarados como “Sem hora para término”."
+            app:helperTextTextAppearance="@style/HelperTextSmall"
+            app:layout_constraintEnd_toEndOf="@+id/guideEnd"
+            app:errorTextColor="@color/erro_forte"
+            app:boxStrokeErrorColor="@color/erro_forte"
+            app:layout_constraintStart_toEndOf="@+id/tilHorarioInicial"
+            app:layout_constraintTop_toBottomOf="@id/tilDataEvento">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etHorarioFinal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:focusable="false"
+                android:clickable="true"
+                android:textColor="@color/TextoDosBotoes"
+                android:textColorLink="@color/VerdeDosBotões" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <!--LInha DIVISóRIA Maior-->
+        <View
+            android:id="@+id/divisorPosData"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/CinzaQuaseBranco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tilHorarioFinal" />
+        <!-- Formato do Evento -->
+
+        <!-- Título do Bloco -->
+
+        <TextView
+            android:id="@+id/FormatoEvento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Formato do Evento"
+            android:textColor="@color/TextoDosBotoes"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/divisorPosData" />
+
+        <!--Linha Divisória-->
+        <View
+            android:id="@+id/divisorFormatoEvento"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/CinzaQuaseBranco"
+            app:layout_constraintStart_toStartOf="@+id/guideStart"
+            app:layout_constraintEnd_toEndOf="@+id/guideEnd"
+            app:layout_constraintTop_toBottomOf="@id/FormatoEvento" />
+
+        <!--Dropdown tipo de evento-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilTipoEvento"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Tipo de Evento"
+            app:errorTextColor="@color/erro_forte"
+            app:boxStrokeErrorColor="@color/erro_forte"
+            app:layout_constraintEnd_toEndOf="@+id/tilHorarioInicial"
+            app:layout_constraintStart_toStartOf="@+id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/divisorFormatoEvento">
+
+            <AutoCompleteTextView
+                android:id="@+id/actTipoEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:dropDownSelector="@color/VerdeDosBotões"
+                android:inputType="none"
+                android:letterSpacing="-0.05"
+                android:textColor="@color/TextoDosBotoes"
+                android:textSize="16sp"
+                app:dropDownBackgroundTint="@color/TextoDosBotoes"
+                app:simpleItemSelectedRippleColor="@color/TextoDosBotoes" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Dropdown Modalidade-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilModalidade"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Modalidade"
+            app:errorTextColor="@color/erro_forte"
+            app:boxStrokeErrorColor="@color/erro_forte"
+            app:layout_constraintEnd_toStartOf="@+id/guideEnd"
+            app:layout_constraintStart_toStartOf="@+id/tilHorarioFinal"
+            app:layout_constraintTop_toBottomOf="@id/divisorFormatoEvento">
+
+            <AutoCompleteTextView
+                android:id="@+id/actModalidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:inputType="none"
+                android:letterSpacing="-0.05"
+                android:textColor="@color/TextoDosBotoes"
+                android:textSize="16sp"
+                app:dropDownBackgroundTint="@color/TextoDosBotoes" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Layout Presencial -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutEndereco"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tilModalidade"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd">
+
+            <!-- Endereço -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEndereco"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Endereço"
+                app:errorTextColor="@color/erro_forte"
+                app:boxStrokeErrorColor="@color/erro_forte"
+                app:layout_constraintTop_toBottomOf="@+id/tilCidade"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEndereco"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Cidade -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilCidade"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Cidade"
+                app:errorTextColor="@color/erro_forte"
+                app:boxStrokeErrorColor="@color/erro_forte"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilEstado">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/actCidade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="56dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/TextoDosBotoes"
+                    android:inputType="textCapWords"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Estado -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEstado"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Estado"
+                app:errorTextColor="@color/erro_forte"
+                app:boxStrokeErrorColor="@color/erro_forte"
+                app:boxBackgroundMode="outline"
+                app:layout_constraintTop_toBottomOf="@+id/tilPais"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/actEstado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="56dp"
+                    android:paddingStart="16dp"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/TextoDosBotoes"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- País -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPais"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="País"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="2dp"
+                app:errorTextColor="@color/erro_forte"
+                app:boxStrokeErrorColor="@color/erro_forte"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/actPais"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="56dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/TextoDosBotoes"
+                    android:textSize="14sp"
+                    tools:layout_editor_absoluteX="15dp"
+                    android:inputType="textCapWords"
+                    tools:layout_editor_absoluteY="749dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Layout Online -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutOnline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/layoutEndereco"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLinkEvento"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Links e/ou Plataformas"
+                app:errorTextColor="@color/erro_forte"
+                app:boxStrokeErrorColor="@color/erro_forte"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLinkEvento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minLines="3"
+                    android:inputType="textMultiLine"
+                    android:textSize="14sp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--LInha DIVISóRIA Maior-->
+        <View
+            android:id="@+id/divisorPosTipo"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/CinzaQuaseBranco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutOnline" />
+
+        <!-- TÍTULO -->
+        <TextView
+            android:id="@+id/txtDetalhes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Detalhes Adicionais"
+            android:textColor="@color/TextoDosBotoes"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/layoutOnline" />
+        <!--Linha Divisória-->
+        <View
+            android:id="@+id/divisorDetalhes"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/CinzaQuaseBranco"
+            app:layout_constraintStart_toStartOf="@+id/guideStart"
+            app:layout_constraintEnd_toEndOf="@+id/guideEnd"
+            app:layout_constraintTop_toBottomOf="@id/txtDetalhes" />
+
+        <!-- MÍNIMO PARTICIPANTES -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilMinimo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:hint="Mínimo de Participantes"
+            app:layout_constraintEnd_toStartOf="@id/tilMaximo"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@+id/txtOpcional">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtMinimo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:letterSpacing="-0.05"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- MÁXIMO PARTICIPANTES -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilMaximo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:hint="Máximo de Participantes"
+            app:boxStrokeWidthFocused="1dp"
+            app:errorTextColor="@color/erro_forte"
+            app:boxStrokeErrorColor="@color/erro_forte"
+            app:layout_constraintEnd_toStartOf="@id/guideEnd"
+            app:layout_constraintStart_toEndOf="@id/tilMinimo"
+            app:layout_constraintTop_toBottomOf="@id/txtOpcional">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtMaximo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:letterSpacing="-0.05"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- TEXTO OPCIONAL -->
+        <TextView
+            android:id="@+id/txtOpcional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ambos Opcionais"
+            android:textColor="#888"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideEnd"
+            app:layout_constraintStart_toStartOf="@+id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/divisorDetalhes" />
+
+        <!-- VISIBILIDADE -->
+        <TextView
+            android:id="@+id/txtVisibilidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Visibilidade"
+            android:textColor="@color/TextoDosBotoes"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/tilMaximo" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupVisibilidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/txtInfoPrivado"
+            app:layout_constraintStart_toStartOf="@id/guideStart">
+
+            <RadioButton
+                android:id="@+id/rbPublico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Público"
+                android:textColor="@color/TextoDosBotoes" />
+
+            <RadioButton
+                android:id="@+id/rbPrivado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Privado (Somente Convidados)"
+                android:textColor="@color/TextoDosBotoes" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/txtInfoPrivado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eventos privados são visíveis apenas para convidados."
+            android:textSize="12sp"
+            android:textColor="#888"
+            app:layout_constraintTop_toBottomOf="@id/txtVisibilidade"
+            app:layout_constraintStart_toStartOf="@id/guideStart"/>
+
+        <!-- BOTÕES -->
+        <Button
+            android:id="@+id/btnConfirmar"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/VerdeDosBotões"
+            android:text="Confirmar"
+            android:textColor="@android:color/white"
+            app:cornerRadius="14dp"
+            app:layout_constraintEnd_toStartOf="@id/btnCancelar"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/radioGroupVisibilidade" />
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/CInzaBotaoCancelar"
+            android:text="Cancelar"
+            android:textColor="@android:color/black"
+            app:cornerRadius="14dp"
+            app:layout_constraintEnd_toEndOf="@id/guideEnd"
+            app:layout_constraintStart_toEndOf="@id/btnConfirmar"
+            app:layout_constraintTop_toBottomOf="@id/radioGroupVisibilidade" />
+
+        <!-- Texto de erro para visibilidade-->
+        <TextView
+            android:id="@+id/txtErroVisibilidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selecione a visibilidade"
+            android:textColor="@color/erro_forte"
+            android:visibility="gone"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/guideStart"
+            app:layout_constraintTop_toBottomOf="@id/radioGroupVisibilidade"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout></ScrollView>
