@@ -1,21 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/CriarEventos"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/MeusEventos"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MeusEventosActivity">
 
-    <Button
-        android:id="@+id/button2"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ENTROU EM MEUS EVENTOS"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10462287" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <!-- BOTÃO VOLTAR -->
+    <ImageButton
+        android:id="@+id/btnVoltar"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="22dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Voltar"
+        android:src="@drawable/ic_voltar"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintEnd_toStartOf="@id/tvTitulo"/>
+
+    <!-- TÍTULO -->
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Meus Eventos"
+        android:textColor="@color/TextoDosBotoes"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnVoltar"
+        app:layout_constraintEnd_toStartOf="@id/imgUser"
+        android:layout_marginTop="17dp"/>
+
+    <!-- FOTO PERFIL -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgUser"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/VerdeDosBotões"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/empty_icon"
+        app:layout_constraintEnd_toStartOf="@id/guideEnd"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvTitulo"
+        app:shapeAppearanceOverlay="@style/CircleImageView" />
+
+    <!-- LINHA DIVISÓRIA -->
+    <View
+        android:id="@+id/divisorHeader"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/CinzaQuaseBranco"
+        app:layout_constraintTop_toBottomOf="@id/imgUser"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- TABS -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/divisorHeader"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintEnd_toEndOf="@id/guideEnd"
+        app:tabIndicatorColor="@color/VerdeDosBotões"
+        app:tabIndicatorHeight="3dp"
+        app:tabTextColor="@color/TextoDosBotoes"
+        app:tabSelectedTextColor="@color/VerdeDosBotões"/>
+
+    <!-- VIEWPAGER -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintEnd_toEndOf="@id/guideEnd"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

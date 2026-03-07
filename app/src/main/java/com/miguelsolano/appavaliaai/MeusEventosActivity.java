@@ -7,6 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MeusEventosActivity extends AppCompatActivity {
 
@@ -15,10 +19,30 @@ public class MeusEventosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_meus_eventos);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.CriarEventos), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.MeusEventos), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        ViewPager2 viewPager = findViewById(R.id.viewPager);
+
+        EventosPagerAdapter adapter = new EventosPagerAdapter(this);
+        viewPager.setAdapter(adapter);
+        System.out.println("Itens no adapter: " + adapter.getItemCount());
+        new TabLayoutMediator(tabLayout, viewPager,
+                (tab, position) -> {
+                    switch (position) {
+                        case 0:
+                            tab.setText("Criados por mim");
+                            break;
+                        case 1:
+                            tab.setText("Participando");
+                            break;
+                        case 2:
+                            tab.setText("Salvos");
+                            break;
+                    }
+                }).attach();
     }
 }
