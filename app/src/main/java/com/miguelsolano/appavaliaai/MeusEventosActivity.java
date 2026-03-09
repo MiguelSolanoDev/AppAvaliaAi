@@ -1,6 +1,7 @@
 package com.miguelsolano.appavaliaai;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,11 @@ public class MeusEventosActivity extends AppCompatActivity {
         });
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         ViewPager2 viewPager = findViewById(R.id.viewPager);
+        //Botão de Voltar
+        ImageButton btnVoltar = findViewById(R.id.btnVoltar);
+        btnVoltar.setOnClickListener(v -> {
+            finish();
+        });
 
         EventosPagerAdapter adapter = new EventosPagerAdapter(this);
         viewPager.setAdapter(adapter);

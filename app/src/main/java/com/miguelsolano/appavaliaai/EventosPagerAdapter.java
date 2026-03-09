@@ -14,7 +14,7 @@ public class EventosPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new CriadosFragment();
+                return new ListaEventosFragment();
 
             case 1:
                 return new ParticipandoFragment();
@@ -23,7 +23,7 @@ public class EventosPagerAdapter extends FragmentStateAdapter {
                 return new SalvosFragment();
 
             default:
-                return new CriadosFragment();
+                return new ListaEventosFragment();
         }
     }
     @Override

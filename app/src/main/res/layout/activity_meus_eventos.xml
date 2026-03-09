@@ -32,6 +32,7 @@
         android:contentDescription="Voltar"
         android:src="@drawable/ic_voltar"
         app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tvTitulo"/>
 
@@ -40,14 +41,17 @@
         android:id="@+id/tvTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="73dp"
         android:text="Meus Eventos"
         android:textColor="@color/TextoDosBotoes"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnVoltar"
         app:layout_constraintEnd_toStartOf="@id/imgUser"
-        android:layout_marginTop="17dp"/>
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/btnVoltar"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- FOTO PERFIL -->
     <com.google.android.material.imageview.ShapeableImageView
@@ -60,6 +64,7 @@
         android:src="@mipmap/empty_icon"
         app:layout_constraintEnd_toStartOf="@id/guideEnd"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@id/tvTitulo"
         app:shapeAppearanceOverlay="@style/CircleImageView" />
 
@@ -78,6 +83,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         app:layout_constraintTop_toBottomOf="@id/divisorHeader"
         app:layout_constraintStart_toStartOf="@id/guideStart"
         app:layout_constraintEnd_toEndOf="@id/guideEnd"
@@ -93,7 +99,7 @@
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/tabLayout"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintEnd_toEndOf="@id/guideEnd"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

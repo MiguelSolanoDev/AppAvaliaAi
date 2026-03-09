@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context=".ParticipandoFragment">
     <!-- Layou Vazio -->
     <LinearLayout
         android:id="@+id/layoutEstadoVazio"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
         android:padding="32dp">
@@ -22,16 +25,20 @@
             android:id="@+id/txtMensagem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:letterSpacing="-0.009"
             android:text="Você não está participando de nenhum evento"
-            android:textSize="16sp"
-            android:layout_marginTop="16dp"/>
+            android:textColor="@color/TextoDosBotoes"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnAcao"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Criar Evento"
-            android:layout_marginTop="16dp"/>
+            android:text="Procurar Eventos"
+            android:layout_marginTop="16dp"
+            app:cornerRadius="5dp"/>
 
     </LinearLayout>
 

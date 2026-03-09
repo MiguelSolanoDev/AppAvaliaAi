@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:orientation="horizontal">
+
+        <!-- IMAGEM -->
+
+        <!-- CONTEÚDO -->
+        <ImageView
+            android:id="@+id/imgEvento"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/futb" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingStart="12dp">
+
+            <!-- TÍTULO -->
+            <TextView
+                android:id="@+id/txtTitulo"
+                android:text="Futebol Beneficente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <!-- DATA -->
+            <TextView
+                android:id="@+id/txtData"
+                android:text="03/02/2026 • 16h - 18h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/TextoDosBotoes"
+                android:layout_marginTop="4dp"/>
+
+            <!-- TAGS -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:cornerRadius="5dp"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:id="@+id/tagStatus"
+                    android:text="Encerrado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#E6A100"
+                    android:textColor="#FFFFFF"
+                    android:padding="6dp"
+                    app:cornerRadius="5dp"
+                    android:layout_marginEnd="6dp"/>
+
+                <TextView
+                    android:id="@+id/tagTipo"
+                    android:text="Presencial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#B7D6CC"
+                    app:cornerRadius="5dp"
+                    android:padding="6dp"/>
+
+            </LinearLayout>
+
+            <!-- CATEGORIA -->
+            <TextView
+                android:id="@+id/tagCategoria"
+                android:text="Esportes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#3F73C4"
+                android:textColor="#FFFFFF"
+                android:padding="6dp"
+                android:layout_marginTop="6dp"/>
+
+        </LinearLayout>
+
+        <!-- AVALIAÇÃO -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtAvaliacao"
+                android:text="⭐ 4.8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
