@@ -1,4 +1,4 @@
-package com.miguelsolano.appavaliaai;
+package com.miguelsolano.appavaliaai.view;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.activity.EdgeToEdge;
@@ -7,6 +7,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.card.MaterialCardView;
+import com.miguelsolano.appavaliaai.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,8 +1,10 @@
-package com.miguelsolano.appavaliaai;
+package com.miguelsolano.appavaliaai.view;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import com.miguelsolano.appavaliaai.BancoFake;
 import android.app.TimePickerDialog;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,11 +14,16 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.miguelsolano.appavaliaai.R;
 import com.miguelsolano.appavaliaai.api.IbgeService;
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -28,6 +35,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.miguelsolano.appavaliaai.api.RetrofitClient;
 import com.miguelsolano.appavaliaai.model.Cidade;
 import com.miguelsolano.appavaliaai.model.Estado;
+import com.miguelsolano.appavaliaai.model.Eventos;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -43,6 +52,8 @@ public class CriarEventosActivity extends AppCompatActivity {
     ConstraintLayout layoutOnline;
     TextInputLayout tilMaximoPart;
     TextInputLayout tilLinkEvento;
+    TextInputLayout tilDescricao;
+
     TextInputLayout tilPais;
     TextInputLayout tilEndereco;
     TextInputLayout tilCidade;
@@ -55,6 +66,7 @@ public class CriarEventosActivity extends AppCompatActivity {
     TextInputLayout tilModalidade;
     TextInputLayout tilTipoEvento;
     TextInputEditText edtMinPart;
+    TextInputEditText edtDescicao;
     TextInputEditText edtEndereco;
     AutoCompleteTextView actCidade;
     TextInputEditText edtLinkEvento;
@@ -67,6 +79,9 @@ public class CriarEventosActivity extends AppCompatActivity {
     TextInputEditText edtDataEvento;
     RadioGroup radioGroupVisibilidade;
     TextView txtErroVisibilidade;
+    ImageView imgCapa;
+    String uriImagemSelecionada;
+    Uri caminhoImg;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -85,6 +100,8 @@ public class CriarEventosActivity extends AppCompatActivity {
         tilModalidade = findViewById(R.id.tilModalidade);
         tilTipoEvento = findViewById(R.id.tilTipoEvento);
         layoutEndereco = findViewById((R.id.layoutEndereco));
+        tilDescricao = findViewById(R.id.tilDescricao);
+        edtDescicao = findViewById(R.id.etDescricao);
         tilEndereco = findViewById(R.id.tilEndereco);
         tilCidade = findViewById(R.id.tilCidade);
         tilEstado = findViewById(R.id.tilEstado);
@@ -114,6 +131,11 @@ public class CriarEventosActivity extends AppCompatActivity {
         radioGroupVisibilidade = findViewById(R.id.radioGroupVisibilidade);
         actPais.setEnabled(false);
         actPais.setText("Brasil");
+
+        imgCapa = findViewById(R.id.imgEvento);
+        if (imgCapa == null) {
+            System.out.println("IMG CAPA ESTÁ NULL");
+        }
 
         //Abrir os Estados e Cidades no Presencial
         actEstado.setThreshold(1);
@@ -188,6 +210,12 @@ public class CriarEventosActivity extends AppCompatActivity {
             }
         });
 
+        //Botão escolha de Capa
+        Button btnCapa = findViewById(R.id.btnCapa);
+        btnCapa.setOnClickListener(v -> {
+            selecionarImagem.launch("image/*");
+        });
+
 
         //Botão Final - Confirmar
         btnConfirmar.setOnClickListener(v -> {
@@ -199,6 +227,7 @@ public class CriarEventosActivity extends AppCompatActivity {
                         .create();
                 dialog.show();
             } else {
+                CriarEvento();
                 Toast.makeText(this, "Evento criado com sucesso!", Toast.LENGTH_SHORT).show();
                 finish();
             }
@@ -570,5 +599,55 @@ public class CriarEventosActivity extends AppCompatActivity {
             }
         });
     }
+    private void CriarEvento(){
+      System.out.println("URI " + uriImagemSelecionada);
+        String visibilidade = "";
+        String titulo = edtNomeEvento.getText().toString().trim();
+        String descricao = edtDescicao.getText().toString().trim();
+        String data = edtDataEvento.getText().toString().trim();
+        String horarioIN = edtHoraInicial.getText().toString().trim();
+        String horarioFN = edtHoraFinal.getText().toString().trim();
+        String modalidade = actModalidade.getText().toString().trim();
+        String tipo = actTipoEvento.getText().toString().trim();
+        String status = "Ativo";
+        String max = edtMaxPart.getText().toString().trim();
+        String min = edtMinPart.getText().toString().trim();
+        double avaliacao = 0.0;
 
+        if(descricao.isEmpty()){
+            descricao.equals(" ");
+        }
+        if(horarioFN.isEmpty()){
+            horarioFN.equals("Sem hora para término");
+        }
+        if(min.isEmpty()){
+            min.equals("--");
+        }
+        if(max.isEmpty()){
+            max.equals("--");
+        }
+        int visibilidadeID = radioGroupVisibilidade.getCheckedRadioButtonId();
+        if(visibilidadeID == R.id.rbPublico){
+            visibilidade.equals("Privado");
+        }else if(visibilidadeID == R.id.rbPrivado){
+            visibilidade.equals("Privado");
+        }
+        Eventos newEvento = new Eventos(titulo, descricao, data, horarioFN, horarioIN,
+                visibilidade, min, max, modalidade, tipo, status, avaliacao, uriImagemSelecionada);
+        BancoFake.listaEventos.add(newEvento);
+    }
+    private final ActivityResultLauncher<String> selecionarImagem =
+            registerForActivityResult(new ActivityResultContracts.GetContent(),
+                    uri -> {
+                        if (uri != null) {
+                            caminhoImg = uri;
+                            try {
+                                imgCapa.setImageURI(uri);
+
+                                uriImagemSelecionada = uri.toString();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
 }

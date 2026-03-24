@@ -1,8 +1,9 @@
-package com.miguelsolano.appavaliaai;
+package com.miguelsolano.appavaliaai.view;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import com.miguelsolano.appavaliaai.BancoFake;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.miguelsolano.appavaliaai.BancoFake;
+import com.miguelsolano.appavaliaai.R;
 import com.miguelsolano.appavaliaai.model.EventoAdapter;
 import com.miguelsolano.appavaliaai.model.Eventos;
 
@@ -20,12 +23,8 @@ public class ListaEventosFragment extends Fragment {
     RecyclerView recyclerEventos;
     List<Eventos> listaEventos;
     EventoAdapter adapter;
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -33,7 +32,6 @@ public class ListaEventosFragment extends Fragment {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
     public static ListaEventosFragment newInstance(String param1, String param2) {
         ListaEventosFragment fragment = new ListaEventosFragment();
         Bundle args = new Bundle();
@@ -60,24 +58,8 @@ public class ListaEventosFragment extends Fragment {
 
         recyclerEventos.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        listaEventos = new ArrayList<>();
+        listaEventos = BancoFake.listaEventos;
 
-        listaEventos.add(new Eventos(
-                "Futebol Beneficente",
-                "03/02/2026 • 16h - 18h",
-                "Encerrado",
-                "Presencial",
-                "Esportes",
-                4.8
-        ));
-        listaEventos.add(new Eventos(
-                "Show de Rock",
-                "10/03/2026 • 21h",
-                "Aberto",
-                "Presencial",
-                "Música",
-                4.6
-        ));
         adapter = new EventoAdapter(listaEventos);
 
         recyclerEventos.setAdapter(adapter);

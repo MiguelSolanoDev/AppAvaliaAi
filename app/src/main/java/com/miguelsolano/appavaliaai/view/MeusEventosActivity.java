@@ -1,4 +1,4 @@
-package com.miguelsolano.appavaliaai;
+package com.miguelsolano.appavaliaai.view;
 
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -12,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.miguelsolano.appavaliaai.R;
 
 public class MeusEventosActivity extends AppCompatActivity {
 
@@ -25,6 +26,7 @@ public class MeusEventosActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         ViewPager2 viewPager = findViewById(R.id.viewPager);
         //Botão de Voltar

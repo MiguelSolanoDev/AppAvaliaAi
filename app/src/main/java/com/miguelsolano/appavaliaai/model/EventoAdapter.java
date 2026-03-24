@@ -1,5 +1,6 @@
 package com.miguelsolano.appavaliaai.model;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,13 +36,21 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.EventoView
     public void onBindViewHolder(@NonNull EventoViewHolder holder, int position) {
 
         Eventos evento = listaEventos.get(position);
-
+        String uriString = evento.getImagemUri();
         holder.titulo.setText(evento.getTitulo());
         holder.data.setText(evento.getData());
         holder.status.setText(evento.getStatus());
+        holder.modalidade.setText(evento.getModalidade());
         holder.tipo.setText(evento.getTipo());
-        holder.categoria.setText(evento.getCategoria());
         holder.avaliacao.setText("⭐ " + evento.getAvaliacao());
+
+
+        if (uriString != null && !uriString.isEmpty()) {
+            Uri uri = Uri.parse(uriString);
+            holder.imagem.setImageURI(uri);
+        } else {
+            holder.imagem.setImageResource(R.drawable.futb); // imagem padrão
+        }
     }
 
     @Override
@@ -55,19 +64,18 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.EventoView
         TextView data;
         TextView status;
         TextView tipo;
-        TextView categoria;
+        TextView modalidade;
         TextView avaliacao;
-
         ImageView imagem;
+
 
         public EventoViewHolder(@NonNull View itemView) {
             super(itemView);
-
             titulo = itemView.findViewById(R.id.txtTitulo);
             data = itemView.findViewById(R.id.txtData);
             status = itemView.findViewById(R.id.tagStatus);
+            modalidade = itemView.findViewById(R.id.tagModalidade);
             tipo = itemView.findViewById(R.id.tagTipo);
-            categoria = itemView.findViewById(R.id.tagCategoria);
             imagem = itemView.findViewById(R.id.imgEvento);
             avaliacao = itemView.findViewById(R.id.txtAvaliacao);
         }

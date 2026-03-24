@@ -1,4 +1,4 @@
-package com.miguelsolano.appavaliaai;
+package com.miguelsolano.appavaliaai.view;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

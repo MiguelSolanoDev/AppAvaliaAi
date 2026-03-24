@@ -1,4 +1,4 @@
-package com.miguelsolano.appavaliaai;
+package com.miguelsolano.appavaliaai.view;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.miguelsolano.appavaliaai.R;
 
 public class CriadosFragment extends Fragment {
 
@@ -22,15 +24,6 @@ public class CriadosFragment extends Fragment {
     public CriadosFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CriadosFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static CriadosFragment newInstance(String param1, String param2) {
         CriadosFragment fragment = new CriadosFragment();

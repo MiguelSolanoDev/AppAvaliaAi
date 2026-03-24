@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".CriarEventosActivity">
+    tools:context=".view.CriarEventosActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -125,7 +125,7 @@
             app:errorTextColor="@color/erro_forte"
             app:boxStrokeErrorColor="@color/erro_forte"
             app:counterEnabled="true"
-            app:counterMaxLength="60"
+            app:counterMaxLength="30"
             app:layout_constraintEnd_toEndOf="@+id/guideEnd"
             app:layout_constraintStart_toStartOf="@+id/guideStart"
             app:layout_constraintTop_toBottomOf="@id/tvInfoEvento">
@@ -135,7 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
-                android:maxLength="60"
+                android:maxLength="30"
                 android:textColor="@color/TextoDosBotoes"
                 android:textColorLink="@color/VerdeDosBotões" />
 
@@ -187,6 +187,8 @@
             app:rippleColor="@color/VerdeDosBotões"
             app:strokeColor="@color/VerdeDosBotões"
             app:strokeWidth="2dp" />
+        <!-- Relacionado a capa -->
+
         <!--LInha DIVISóRIA Maior-->
         <View
             android:id="@+id/divisorPosInformacoes"

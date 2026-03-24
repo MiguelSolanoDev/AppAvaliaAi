@@ -5,7 +5,7 @@
     android:id="@+id/CriarEventos"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProcurarEventosActivity">
+    tools:context=".view.ProcurarEventosActivity">
 
     <Button
         android:id="@+id/button3"

@@ -35,7 +35,6 @@
             <!-- TÍTULO -->
             <TextView
                 android:id="@+id/txtTitulo"
-                android:text="Futebol Beneficente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
@@ -44,7 +43,6 @@
             <!-- DATA -->
             <TextView
                 android:id="@+id/txtData"
-                android:text="03/02/2026 • 16h - 18h"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/TextoDosBotoes"
@@ -60,30 +58,27 @@
 
                 <TextView
                     android:id="@+id/tagStatus"
-                    android:text="Encerrado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#E6A100"
                     android:textColor="#FFFFFF"
                     android:padding="6dp"
-                    app:cornerRadius="5dp"
+                    app:cornerRadius="20dp"
                     android:layout_marginEnd="6dp"/>
 
                 <TextView
-                    android:id="@+id/tagTipo"
-                    android:text="Presencial"
+                    android:id="@+id/tagModalidade"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#B7D6CC"
-                    app:cornerRadius="5dp"
+                    app:cornerRadius="20dp"
                     android:padding="6dp"/>
 
             </LinearLayout>
 
-            <!-- CATEGORIA -->
+            <!-- Tipo -->
             <TextView
-                android:id="@+id/tagCategoria"
-                android:text="Esportes"
+                android:id="@+id/tagTipo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#3F73C4"
@@ -102,7 +97,6 @@
 
             <TextView
                 android:id="@+id/txtAvaliacao"
-                android:text="⭐ 4.8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"/>
