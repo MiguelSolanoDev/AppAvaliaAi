@@ -45,7 +45,7 @@ public class Eventos {
     }
 
     public String getImagemUri() {
-        return imagemUri;
+        return imagemUri != null ? imagemUri : "";
     }
 
     public String getDescricao() {

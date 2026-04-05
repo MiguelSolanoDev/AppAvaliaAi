@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import com.miguelsolano.appavaliaai.BancoFake;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -53,7 +54,6 @@ public class CriarEventosActivity extends AppCompatActivity {
     TextInputLayout tilMaximoPart;
     TextInputLayout tilLinkEvento;
     TextInputLayout tilDescricao;
-
     TextInputLayout tilPais;
     TextInputLayout tilEndereco;
     TextInputLayout tilCidade;
@@ -134,7 +134,7 @@ public class CriarEventosActivity extends AppCompatActivity {
 
         imgCapa = findViewById(R.id.imgEvento);
         if (imgCapa == null) {
-            System.out.println("IMG CAPA ESTÁ NULL");
+            Log.d("IMG_DEBUG", "ANTES DE SALVAR: " + uriImagemSelecionada);
         }
 
         //Abrir os Estados e Cidades no Presencial
@@ -213,7 +213,11 @@ public class CriarEventosActivity extends AppCompatActivity {
         //Botão escolha de Capa
         Button btnCapa = findViewById(R.id.btnCapa);
         btnCapa.setOnClickListener(v -> {
-            selecionarImagem.launch("image/*");
+            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+            intent.setType("image/*");
+            intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            selecionarImagem.launch(intent);
         });
 
 
@@ -615,38 +619,43 @@ public class CriarEventosActivity extends AppCompatActivity {
         double avaliacao = 0.0;
 
         if(descricao.isEmpty()){
-            descricao.equals(" ");
+            descricao= " ";
         }
         if(horarioFN.isEmpty()){
-            horarioFN.equals("Sem hora para término");
+            horarioFN = "Sem hora para término";
         }
         if(min.isEmpty()){
-            min.equals("--");
+            min = "--";
         }
         if(max.isEmpty()){
-            max.equals("--");
+            max = "--";
         }
         int visibilidadeID = radioGroupVisibilidade.getCheckedRadioButtonId();
         if(visibilidadeID == R.id.rbPublico){
-            visibilidade.equals("Privado");
+            visibilidade = "Privado";
         }else if(visibilidadeID == R.id.rbPrivado){
-            visibilidade.equals("Privado");
+            visibilidade = "Privado";
+        }
+        if (uriImagemSelecionada == null) {
+            uriImagemSelecionada = "";
         }
         Eventos newEvento = new Eventos(titulo, descricao, data, horarioFN, horarioIN,
                 visibilidade, min, max, modalidade, tipo, status, avaliacao, uriImagemSelecionada);
         BancoFake.listaEventos.add(newEvento);
     }
-    private final ActivityResultLauncher<String> selecionarImagem =
-            registerForActivityResult(new ActivityResultContracts.GetContent(),
-                    uri -> {
-                        if (uri != null) {
-                            caminhoImg = uri;
-                            try {
-                                imgCapa.setImageURI(uri);
-
+    private final ActivityResultLauncher<Intent> selecionarImagem =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                    result -> {
+                        if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                            Uri uri = result.getData().getData();
+                            if (uri != null) {
+                                getContentResolver().takePersistableUriPermission(
+                                        uri,
+                                        Intent.FLAG_GRANT_READ_URI_PERMISSION
+                                );
+                                caminhoImg = uri;
                                 uriImagemSelecionada = uri.toString();
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                                Log.d("IMG_DEBUG", "URI SALVA: " + uriImagemSelecionada);
                             }
                         }
                     });

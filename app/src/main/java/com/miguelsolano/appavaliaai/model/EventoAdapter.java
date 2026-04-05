@@ -43,13 +43,15 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.EventoView
         holder.modalidade.setText(evento.getModalidade());
         holder.tipo.setText(evento.getTipo());
         holder.avaliacao.setText("⭐ " + evento.getAvaliacao());
-
-
-        if (uriString != null && !uriString.isEmpty()) {
-            Uri uri = Uri.parse(uriString);
-            holder.imagem.setImageURI(uri);
-        } else {
-            holder.imagem.setImageResource(R.drawable.futb); // imagem padrão
+        try {
+            if (uriString != null && !uriString.isEmpty()) {
+                Uri uri = Uri.parse(uriString);
+                holder.imagem.setImageURI(uri);
+            } else {
+                holder.imagem.setImageResource(R.drawable.futb);
+            }
+        } catch (Exception e) {
+            holder.imagem.setImageResource(R.drawable.futb);
         }
     }
 
