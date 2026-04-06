@@ -1,19 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="4dp">
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp"
+    android:foreground="?attr/selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="12dp"
-        android:orientation="horizontal">
+        android:gravity="center_vertical">
 
         <!-- IMAGEM -->
 
@@ -21,8 +20,11 @@
         <ImageView
             android:id="@+id/imgEvento"
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="110dp"
+            android:background="@drawable/bg_image_rounded"
+            android:clipToOutline="true"
             android:scaleType="centerCrop"
+            android:layout_gravity="center_vertical"
             android:src="@drawable/futb" />
 
         <LinearLayout
@@ -35,74 +37,79 @@
             <!-- TÍTULO -->
             <TextView
                 android:id="@+id/txtTitulo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-            <!-- DATA -->
+            <!-- DATA + HORA -->
             <TextView
                 android:id="@+id/txtData"
+                android:textSize="14sp"
+                android:textColor="#777"
+                android:layout_marginTop="2dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/TextoDosBotoes"
-                android:layout_marginTop="4dp"/>
+                android:layout_height="wrap_content"/>
 
             <!-- TAGS -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:cornerRadius="5dp"
                 android:layout_marginTop="6dp">
 
                 <TextView
                     android:id="@+id/tagStatus"
+                    style="@style/TagStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#E6A100"
-                    android:textColor="#FFFFFF"
-                    android:padding="6dp"
-                    app:cornerRadius="20dp"
-                    android:layout_marginEnd="6dp"/>
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/tag_status_bg"/>
 
                 <TextView
                     android:id="@+id/tagModalidade"
+                    style="@style/TagStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#B7D6CC"
-                    app:cornerRadius="20dp"
-                    android:padding="6dp"/>
-
+                    android:background="@drawable/tag_modalidade_bg"/>
             </LinearLayout>
 
-            <!-- Tipo -->
+            <!-- TIPO -->
             <TextView
                 android:id="@+id/tagTipo"
+                style="@style/TagStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#3F73C4"
-                android:textColor="#FFFFFF"
-                android:padding="6dp"
+                android:background="@drawable/tag_tipo_bg"
                 android:layout_marginTop="6dp"/>
 
         </LinearLayout>
 
-        <!-- AVALIAÇÃO -->
+        <!-- LADO DIREITO -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
+            <!-- SETA -->
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_setaf"
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
+
+            <!-- AVALIAÇÃO -->
             <TextView
                 android:id="@+id/txtAvaliacao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"/>
-
+                android:paddingTop="10dp"
+                android:text="⭐ 4.8"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"/>
         </LinearLayout>
-
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

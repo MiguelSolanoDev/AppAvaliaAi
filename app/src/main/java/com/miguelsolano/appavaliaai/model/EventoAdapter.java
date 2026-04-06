@@ -39,7 +39,18 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.EventoView
         String uriString = evento.getImagemUri();
         holder.titulo.setText(evento.getTitulo());
         holder.data.setText(evento.getData());
-        holder.status.setText(evento.getStatus());
+        String status = evento.getStatus();
+        holder.status.setText(status);
+
+        if (status.equalsIgnoreCase("Ativo")) {
+            holder.status.setBackgroundResource(R.drawable.tag_status_bg);
+
+        } else if (status.equalsIgnoreCase("Encerrado")) {
+            holder.status.setBackgroundResource(R.drawable.tag_status_enc);
+
+        } else if (status.equalsIgnoreCase("Cancelado")) {
+            holder.status.setBackgroundResource(R.drawable.tag_status_canc);
+        }
         holder.modalidade.setText(evento.getModalidade());
         holder.tipo.setText(evento.getTipo());
         holder.avaliacao.setText("⭐ " + evento.getAvaliacao());
