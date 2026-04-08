@@ -44,6 +44,11 @@
                 android:layout_height="wrap_content"/>
 
             <!-- DATA + HORA -->
+            <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp">
             <TextView
                 android:id="@+id/txtData"
                 android:textSize="14sp"
@@ -51,6 +56,25 @@
                 android:layout_marginTop="2dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/barraDiv"
+                    android:layout_width="wrap_content"
+                    android:textColor="#777"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:paddingStart="7dp"
+                    android:paddingEnd="7dp"
+                    android:text="|" />
+
+            <TextView
+                android:id="@+id/txtHorario"
+                android:textSize="14sp"
+                android:textColor="#777"
+                android:layout_marginTop="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            </LinearLayout>
 
             <!-- TAGS -->
             <LinearLayout
@@ -66,6 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="6dp"
                     android:background="@drawable/tag_status_bg"/>
+
 
                 <TextView
                     android:id="@+id/tagModalidade"
@@ -90,22 +115,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="bottom">
 
-            <!-- SETA -->
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/ic_setaf"
-                android:layout_gravity="center"
-                android:layout_weight="1"/>
-
-            <!-- AVALIAÇÃO -->
             <TextView
                 android:id="@+id/txtAvaliacao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
                 android:text="⭐ 4.8"
                 android:textSize="16sp"
                 android:layout_marginTop="8dp"/>

@@ -1,52 +1,60 @@
 package com.miguelsolano.appavaliaai.view;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.LinearLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.miguelsolano.appavaliaai.BancoFake;
 import com.miguelsolano.appavaliaai.R;
+import com.miguelsolano.appavaliaai.model.EventoAdapter;
+import com.miguelsolano.appavaliaai.model.Eventos;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CriadosFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private RecyclerView recyclerEventos;
+    private LinearLayout layoutEstadoVazio;
 
     public CriadosFragment() {
-        // Required empty public constructor
-    }
-    // TODO: Rename and change types and number of parameters
-    public static CriadosFragment newInstance(String param1, String param2) {
-        CriadosFragment fragment = new CriadosFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        // obrigatório
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_criados, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_criados, container, false);
+
+        recyclerEventos = view.findViewById(R.id.recyclerEventos);
+        layoutEstadoVazio = view.findViewById(R.id.layoutEstadoVazio);
+
+        // Layout da lista
+        recyclerEventos.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        List<Eventos> listaEventos = carregarEventos();
+
+        if (listaEventos.isEmpty()) {
+            layoutEstadoVazio.setVisibility(View.VISIBLE);
+            recyclerEventos.setVisibility(View.GONE);
+        } else {
+            layoutEstadoVazio.setVisibility(View.GONE);
+            recyclerEventos.setVisibility(View.VISIBLE);
+
+            EventoAdapter adapter = new EventoAdapter(listaEventos);
+            recyclerEventos.setAdapter(adapter);
+        }
+
+        return view;
+    }
+
+    // 🔥 Simulação (depois você troca pelo banco)
+    private List<Eventos> carregarEventos() {
+        return BancoFake.listaEventos; // começa vazio
     }
 }

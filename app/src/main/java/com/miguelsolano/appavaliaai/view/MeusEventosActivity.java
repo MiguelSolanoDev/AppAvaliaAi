@@ -2,14 +2,12 @@ package com.miguelsolano.appavaliaai.view;
 
 import android.os.Bundle;
 import android.widget.ImageButton;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.miguelsolano.appavaliaai.R;
@@ -37,7 +35,6 @@ public class MeusEventosActivity extends AppCompatActivity {
 
         EventosPagerAdapter adapter = new EventosPagerAdapter(this);
         viewPager.setAdapter(adapter);
-        System.out.println("Itens no adapter: " + adapter.getItemCount());
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> {
                     switch (position) {

@@ -6,11 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.miguelsolano.appavaliaai.R;
-import com.miguelsolano.appavaliaai.model.Eventos;
 
 import java.util.List;
 
@@ -36,24 +36,47 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.EventoView
     public void onBindViewHolder(@NonNull EventoViewHolder holder, int position) {
 
         Eventos evento = listaEventos.get(position);
-        String uriString = evento.getImagemUri();
+
+        // TEXTOS
         holder.titulo.setText(evento.getTitulo());
         holder.data.setText(evento.getData());
+
+        // STATUS + COR
         String status = evento.getStatus();
         holder.status.setText(status);
 
-        if (status.equalsIgnoreCase("Ativo")) {
+        if ("Ativo".equalsIgnoreCase(status)) {
             holder.status.setBackgroundResource(R.drawable.tag_status_bg);
-
-        } else if (status.equalsIgnoreCase("Encerrado")) {
+        } else if ("Encerrado".equalsIgnoreCase(status)) {
             holder.status.setBackgroundResource(R.drawable.tag_status_enc);
-
-        } else if (status.equalsIgnoreCase("Cancelado")) {
+        } else if ("Cancelado".equalsIgnoreCase(status)) {
             holder.status.setBackgroundResource(R.drawable.tag_status_canc);
         }
+
+        // MODALIDADE E TIPO
         holder.modalidade.setText(evento.getModalidade());
         holder.tipo.setText(evento.getTipo());
+
+        // ⭐ AVALIAÇÃO
         holder.avaliacao.setText("⭐ " + evento.getAvaliacao());
+
+        // ⏰ HORÁRIO (CONCATENADO CORRETAMENTE)
+        String inicio = evento.getHorarioIN() != null ? evento.getHorarioIN() : "";
+        String fim = evento.getHorarioFN() != null ? evento.getHorarioFN() : "";
+
+        String horarioFormatado;
+
+        if (fim.equals("Sem hora para término")) {
+            horarioFormatado = inicio;
+        } else {
+            horarioFormatado = inicio + " - " + fim;
+        }
+
+        holder.horario.setText(horarioFormatado);
+
+        // 🖼️ IMAGEM
+        String uriString = evento.getImagemUri();
+
         try {
             if (uriString != null && !uriString.isEmpty()) {
                 Uri uri = Uri.parse(uriString);
@@ -79,11 +102,12 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.EventoView
         TextView tipo;
         TextView modalidade;
         TextView avaliacao;
+        TextView horario;
         ImageView imagem;
-
 
         public EventoViewHolder(@NonNull View itemView) {
             super(itemView);
+
             titulo = itemView.findViewById(R.id.txtTitulo);
             data = itemView.findViewById(R.id.txtData);
             status = itemView.findViewById(R.id.tagStatus);
@@ -91,6 +115,7 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.EventoView
             tipo = itemView.findViewById(R.id.tagTipo);
             imagem = itemView.findViewById(R.id.imgEvento);
             avaliacao = itemView.findViewById(R.id.txtAvaliacao);
+            horario = itemView.findViewById(R.id.txtHorario);
         }
     }
 }

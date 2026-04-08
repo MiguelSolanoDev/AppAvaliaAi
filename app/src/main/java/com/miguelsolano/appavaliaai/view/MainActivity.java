@@ -7,7 +7,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.card.MaterialCardView;
+import com.miguelsolano.appavaliaai.BancoFake;
 import com.miguelsolano.appavaliaai.R;
+import com.miguelsolano.appavaliaai.model.Eventos;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
         MaterialCardView btnCriar = findViewById(R.id.btnCriarEventos);
         MaterialCardView btnMeus = findViewById(R.id.btnMeusEventos);
         MaterialCardView btnProcurar = findViewById(R.id.btnProcurarEventos);
+
+        Eventos newEvento = new Eventos("Evento de Teste", "Teste", "10/10/2026", "19:00", "17:00",
+                "Publico", "10", "20", "Presencial", "Tecnologia", "Cancelado", 0.0, "");
+        BancoFake.listaEventos.add(newEvento);
 
         btnCriar.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, CriarEventosActivity.class);
