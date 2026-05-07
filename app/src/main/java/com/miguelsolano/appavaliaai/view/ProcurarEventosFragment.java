@@ -1,5 +1,25 @@
 package com.miguelsolano.appavaliaai.view;
 
+import static androidx.core.content.ContentProviderCompat.requireContext;
+import static androidx.core.content.ContextCompat.startActivity;
+
+import static java.security.AccessController.getContext;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.miguelsolano.appavaliaai.BancoFake;
+import com.miguelsolano.appavaliaai.R;
+import com.miguelsolano.appavaliaai.model.EventoAdapter;
+import com.miguelsolano.appavaliaai.model.Eventos;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -16,12 +36,11 @@ import com.miguelsolano.appavaliaai.model.EventoAdapter;
 import com.miguelsolano.appavaliaai.model.Eventos;
 import java.util.List;
 
-public class CriadosFragment extends Fragment {
-
+public class ProcurarEventosFragment extends Fragment {
     private RecyclerView recyclerEventos;
     private LinearLayout layoutEstadoVazio;
 
-    public CriadosFragment() {
+    public ProcurarEventosFragment() {
         // obrigatório
     }
 
@@ -45,7 +64,7 @@ public class CriadosFragment extends Fragment {
 
             btnAcao.setOnClickListener( v -> {
                 Intent intent = new Intent(requireContext(), CriarEventosActivity.class);
-                        startActivity(intent);
+                startActivity(intent);
             });
 
         } else {
