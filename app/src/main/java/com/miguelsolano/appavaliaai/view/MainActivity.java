@@ -29,13 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
        Eventos newEvento = new Eventos("Evento de Teste", "Teste", "10/10/2026", "19:00", "17:00",
                 "Publico", "10", "20", "Presencial", "Tecnologia", "Cancelado", 0.0, "");
-        BancoFake.listaEventos.add(newEvento);
          Eventos newEvento2 = new Eventos("Festa da Firma", "Teste", "10/10/2026", "19:00", "17:00",
                 "Publico", "10", "20", "Presencial", "Diversão", "Encerrado", 0.0, "");
-        BancoFake.listaEventos.add(newEvento);
          Eventos newEvento3 = new Eventos("Trabalho de Escola", "Teste", "10/10/2026", "19:00", "17:00",
                 "Publico", "10", "20", "Híbrido", "Estudos", "Ativo", 0.0, "");
-        BancoFake.listaEventos.add(newEvento);
          Eventos newEvento4 = new Eventos("Evento de Teste 2", "Teste", "10/10/2026", "19:00", "17:00",
                 "Publico", "10", "20", "Online", "Tecnologia", "Cancelado", 0.0, "");
         BancoFake.listaEventos.add(newEvento);

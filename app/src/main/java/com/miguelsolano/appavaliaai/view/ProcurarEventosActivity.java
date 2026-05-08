@@ -1,10 +1,15 @@
 package com.miguelsolano.appavaliaai.view;
+import static androidx.core.content.ContentProviderCompat.requireContext;
+
+import static com.miguelsolano.appavaliaai.BancoFake.listaEventos;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,11 +17,19 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.miguelsolano.appavaliaai.BancoFake;
 import com.miguelsolano.appavaliaai.R;
+import com.miguelsolano.appavaliaai.model.EventoAdapter;
+import com.miguelsolano.appavaliaai.model.Eventos;
+
+import java.util.List;
 
 public class ProcurarEventosActivity extends AppCompatActivity {
-
+    private RecyclerView recyclerEventos;
+    private LinearLayout layoutEstadoVazio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +40,13 @@ public class ProcurarEventosActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        recyclerEventos = findViewById(R.id.recyclerEventos);
+        recyclerEventos.setLayoutManager(new LinearLayoutManager(this));
+
+        EventoAdapter adapter = new EventoAdapter(BancoFake.listaEventos);
+        recyclerEventos.setAdapter(adapter);
+
         //Botão de Voltar
         ImageButton btnVoltar = findViewById(R.id.btnVoltar);
         btnVoltar.setOnClickListener(v -> {
