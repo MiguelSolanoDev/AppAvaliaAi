@@ -40,13 +40,13 @@
                 <!-- BOTÃO VOLTAR -->
                 <ImageButton
                     android:id="@+id/btnVoltar"
-                    android:layout_width="17dp"
-                    android:layout_height="17dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_marginTop="22dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="Voltar"
                     android:src="@drawable/ic_voltar"
-                    app:layout_constraintStart_toStartOf="@id/guideStart"
+                    app:layout_constraintStart_toEndOf="@id/guideStart"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/tvTitulo"/>
 
@@ -175,8 +175,64 @@
                         android:backgroundTint="@color/white"
                         app:cornerRadius="5dp"/>
 
+                    <Button
+                        android:id="@+id/btnHibrido"
+                        style="@style/TagStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="8dp"
+                        android:text="Híbrido"
+                        android:textColor="@color/TextoIcones"
+                        android:backgroundTint="@color/white"
+                        app:cornerRadius="5dp"/>
+
+                    <Button
+                        android:id="@+id/btnAtivo"
+                        style="@style/TagStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="8dp"
+                        android:text="Ativo"
+                        android:textColor="@color/TextoIcones"
+                        android:backgroundTint="@color/white"
+                        app:cornerRadius="5dp"/>
+
                 </LinearLayout>
             </HorizontalScrollView>
+
+            <!-- TELA VAZIA -->
+            <LinearLayout
+                android:id="@+id/layoutEstadoVazio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="32dp">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/ic_calendariomais" />
+
+                <TextView
+                    android:id="@+id/txtMensagem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="Não há eventos criados"
+                    android:textColor="@color/TextoDosBotoes"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btnAcao"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Criar Evento"
+                    app:cornerRadius="5dp" />
+
+            </LinearLayout>
 
             <!-- LISTA DE EVENTOS -->
             <androidx.recyclerview.widget.RecyclerView
@@ -184,7 +240,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
-                android:padding="12dp"
                 tools:listitem="@layout/item_evento"/>
 
         </LinearLayout>

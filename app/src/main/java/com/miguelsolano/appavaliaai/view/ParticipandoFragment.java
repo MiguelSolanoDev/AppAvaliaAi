@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.miguelsolano.appavaliaai.R;
 
@@ -27,10 +28,9 @@ public class ParticipandoFragment extends Fragment {
     private String mParam2;
 
     public ParticipandoFragment() {
-        // Required empty public constructor
+
     }
 
-    // TODO: Rename and change types and number of parameters
     public static ParticipandoFragment newInstance(String param1, String param2) {
         ParticipandoFragment fragment = new ParticipandoFragment();
         Bundle args = new Bundle();

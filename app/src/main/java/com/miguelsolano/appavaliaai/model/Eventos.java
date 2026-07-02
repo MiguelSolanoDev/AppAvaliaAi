@@ -1,7 +1,5 @@
 package com.miguelsolano.appavaliaai.model;
 
-import android.net.Uri;
-
 public class Eventos {
 
     String titulo;
@@ -18,77 +16,93 @@ public class Eventos {
     String imagemUri;
     double avaliacao;
 
-    public Eventos(String titulo, String descricao ,String data, String horarioFN,String horarioIN,
-                   String visibilidade,String minPart,String maxPart,String modalidade,
-                   String tipo, String status, double avaliacao, String imagemUri) {
+    public Eventos() {
+    }
+
+    public Eventos(String titulo, String descricao, String data, String horarioFN, String horarioIN,
+                   String visibilidade, String minPart, String maxPart, String modalidade,
+                   String tipo, String status, double avaliacao) {
+
         this.titulo = titulo;
         this.descricao = descricao;
         this.data = data;
         this.horarioIN = horarioIN;
         this.horarioFN = horarioFN;
-        //Presencial / Online / Híbrido
         this.modalidade = modalidade;
-        //Evento pode ser de inúmeros tipos: culinário, esportivo, etc...
         this.tipo = tipo;
-        //Ativo / Andamento / Encerrado
         this.status = status;
-        //Público / Privado
         this.visibilidade = visibilidade;
         this.minPart = minPart;
         this.maxPart = maxPart;
         this.avaliacao = avaliacao;
+    }
+
+    public String getTitulo() { return titulo; }
+    public String getDescricao() { return descricao; }
+    public String getData() { return data; }
+    public String getHorarioIN() { return horarioIN; }
+    public String getHorarioFN() { return horarioFN; }
+    public String getModalidade() { return modalidade; }
+    public String getTipo() { return tipo; }
+    public String getStatus() { return status; }
+    public String getVisibilidade() { return visibilidade; }
+    public String getMaxPart() { return maxPart; }
+    public String getMinPart() { return minPart; }
+    public double getAvaliacao() { return avaliacao; }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public void setHorarioIN(String horarioIN) {
+        this.horarioIN = horarioIN;
+    }
+
+    public void setHorarioFN(String horarioFN) {
+        this.horarioFN = horarioFN;
+    }
+
+    public void setModalidade(String modalidade) {
+        this.modalidade = modalidade;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setVisibilidade(String visibilidade) {
+        this.visibilidade = visibilidade;
+    }
+
+    public void setMaxPart(String maxPart) {
+        this.maxPart = maxPart;
+    }
+
+    public void setMinPart(String minPart) {
+        this.minPart = minPart;
+    }
+
+    public void setImagemUri(String imagemUri) {
         this.imagemUri = imagemUri;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public void setAvaliacao(double avaliacao) {
+        this.avaliacao = avaliacao;
     }
 
     public String getImagemUri() {
         return imagemUri != null ? imagemUri : "";
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-       public String getData() {
-        return data;
-    }
-
-    public String getHorarioIN() {
-        return horarioIN;
-    }
-
-    public String getHorarioFN() {
-        return horarioFN;
-    }
-
-    public String getModalidade() {
-        return modalidade;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public String getVisibilidade() {
-        return visibilidade;
-    }
-
-    public String getMaxPart() {
-        return maxPart;
-    }
-
-    public String getMinPart() {
-        return minPart;
-    }
-
-    public double getAvaliacao() {
-        return avaliacao;
     }
 }

@@ -11,12 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.miguelsolano.appavaliaai.BancoFake;
 import com.miguelsolano.appavaliaai.R;
-import com.miguelsolano.appavaliaai.model.EventoAdapter;
 import com.miguelsolano.appavaliaai.model.Eventos;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListaEventosFragment extends Fragment {

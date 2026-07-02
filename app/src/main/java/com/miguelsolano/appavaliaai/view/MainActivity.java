@@ -1,15 +1,18 @@
 package com.miguelsolano.appavaliaai.view;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.card.MaterialCardView;
-import com.miguelsolano.appavaliaai.BancoFake;
+import com.google.firebase.FirebaseApp;
 import com.miguelsolano.appavaliaai.R;
 import com.miguelsolano.appavaliaai.model.Eventos;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,19 +29,11 @@ public class MainActivity extends AppCompatActivity {
         MaterialCardView btnCriar = findViewById(R.id.btnCriarEventos);
         MaterialCardView btnMeus = findViewById(R.id.btnMeusEventos);
         MaterialCardView btnProcurar = findViewById(R.id.btnProcurarEventos);
+        /*Banco de Dados*/
 
-       Eventos newEvento = new Eventos("Evento de Teste", "Teste", "10/10/2026", "19:00", "17:00",
-                "Publico", "10", "20", "Presencial", "Tecnologia", "Cancelado", 0.0, "");
-         Eventos newEvento2 = new Eventos("Festa da Firma", "Teste", "10/10/2026", "19:00", "17:00",
-                "Publico", "10", "20", "Presencial", "Diversão", "Encerrado", 0.0, "");
-         Eventos newEvento3 = new Eventos("Trabalho de Escola", "Teste", "10/10/2026", "19:00", "17:00",
-                "Publico", "10", "20", "Híbrido", "Estudos", "Ativo", 0.0, "");
-         Eventos newEvento4 = new Eventos("Evento de Teste 2", "Teste", "10/10/2026", "19:00", "17:00",
-                "Publico", "10", "20", "Online", "Tecnologia", "Cancelado", 0.0, "");
-        BancoFake.listaEventos.add(newEvento);
-        BancoFake.listaEventos.add(newEvento2);
-        BancoFake.listaEventos.add(newEvento3);
-        BancoFake.listaEventos.add(newEvento4);
+
+
+
 
         btnCriar.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, CriarEventosActivity.class);

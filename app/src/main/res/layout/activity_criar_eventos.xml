@@ -381,8 +381,8 @@
                 android:letterSpacing="-0.05"
                 android:textColor="@color/TextoDosBotoes"
                 android:textSize="16sp"
-                app:dropDownBackgroundTint="@color/TextoDosBotoes"
-                app:simpleItemSelectedRippleColor="@color/TextoDosBotoes" />
+                app:dropDownBackgroundTint="@color/white"
+                app:simpleItemSelectedRippleColor="@color/CinzaQuaseBranco" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -409,7 +409,7 @@
                 android:letterSpacing="-0.05"
                 android:textColor="@color/TextoDosBotoes"
                 android:textSize="16sp"
-                app:dropDownBackgroundTint="@color/TextoDosBotoes" />
+                app:dropDownBackgroundTint="@color/CinzaQuaseBranco" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -466,6 +466,7 @@
                     android:paddingEnd="16dp"
                     android:textColor="@color/TextoDosBotoes"
                     android:inputType="textCapWords"
+                    android:popupBackground="@color/CinzaQuaseBranco"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -494,6 +495,7 @@
                     android:clickable="true"
                     android:paddingEnd="16dp"
                     android:textColor="@color/TextoDosBotoes"
+                    android:popupBackground="@color/CinzaQuaseBranco"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -524,8 +526,8 @@
                     android:textSize="14sp"
                     tools:layout_editor_absoluteX="15dp"
                     android:inputType="textCapWords"
+                    android:popupBackground="@color/CinzaQuaseBranco"
                     tools:layout_editor_absoluteY="749dp" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
 

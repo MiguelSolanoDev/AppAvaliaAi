@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "684988920373",
+    "project_id": "appavaliaai-41d3d",
+    "storage_bucket": "appavaliaai-41d3d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684988920373:android:71a2caae3040203fc2f77c",
+        "android_client_info": {
+          "package_name": "com.miguelsolano.appavaliaai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOscOThh9YaZQYJTUcNdDD7dxpGCw1jZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

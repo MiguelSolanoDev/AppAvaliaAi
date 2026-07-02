@@ -2,6 +2,8 @@ package com.miguelsolano.appavaliaai.view;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.miguelsolano.appavaliaai.BancoFake;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -19,7 +21,8 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.FirebaseApp;
 import com.miguelsolano.appavaliaai.R;
 import com.miguelsolano.appavaliaai.api.IbgeService;
 import androidx.activity.EdgeToEdge;
@@ -83,6 +86,8 @@ public class CriarEventosActivity extends AppCompatActivity {
     String uriImagemSelecionada;
     Uri caminhoImg;
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,6 +141,7 @@ public class CriarEventosActivity extends AppCompatActivity {
         if (imgCapa == null) {
             Log.d("IMG_DEBUG", "ANTES DE SALVAR: " + uriImagemSelecionada);
         }
+
 
         //Abrir os Estados e Cidades no Presencial
         actEstado.setThreshold(1);
@@ -604,7 +610,6 @@ public class CriarEventosActivity extends AppCompatActivity {
         });
     }
     private void CriarEvento(){
-      System.out.println("URI " + uriImagemSelecionada);
         String visibilidade = "";
         String titulo = edtNomeEvento.getText().toString().trim();
         String descricao = edtDescicao.getText().toString().trim();
@@ -618,30 +623,49 @@ public class CriarEventosActivity extends AppCompatActivity {
         String min = edtMinPart.getText().toString().trim();
         double avaliacao = 0.0;
 
-        if(descricao.isEmpty()){
-            descricao= " ";
-        }
-        if(horarioFN.isEmpty()){
-            horarioFN = "Sem hora para término";
-        }
-        if(min.isEmpty()){
-            min = "--";
-        }
-        if(max.isEmpty()){
-            max = "--";
-        }
+        if(descricao.isEmpty()) descricao = " ";
+        if(horarioFN.isEmpty()) horarioFN = "Sem hora para término";
+        if(min.isEmpty()) min = "--";
+        if(max.isEmpty()) max = "--";
+
         int visibilidadeID = radioGroupVisibilidade.getCheckedRadioButtonId();
+
         if(visibilidadeID == R.id.rbPublico){
-            visibilidade = "Privado";
-        }else if(visibilidadeID == R.id.rbPrivado){
-            visibilidade = "Privado";
+            visibilidade = "PUBLICO";
+        } else if(visibilidadeID == R.id.rbPrivado){
+            visibilidade = "PRIVADO";
         }
-        if (uriImagemSelecionada == null) {
+
+        if(uriImagemSelecionada == null){
             uriImagemSelecionada = "";
         }
-        Eventos newEvento = new Eventos(titulo, descricao, data, horarioFN, horarioIN,
-                visibilidade, min, max, modalidade, tipo, status, avaliacao, uriImagemSelecionada);
-        BancoFake.listaEventos.add(newEvento);
+
+        // 🔥 CRIAR OBJETO
+        Eventos evento = new Eventos(
+                titulo,
+                descricao,
+                data,
+                horarioFN,
+                horarioIN,
+                visibilidade,
+                min,
+                max,
+                modalidade,
+                tipo,
+                status,
+                avaliacao
+        );
+        // 🔥 SALVAR NO FIREBASE
+        db.collection("eventos")
+                .add(evento)
+                .addOnSuccessListener(documentReference -> {
+                    Log.d("FIRESTORE", "Evento criado com ID: " + documentReference.getId());
+                    Toast.makeText(this, "Evento salvo no Firebase!", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FIRESTORE", "Erro ao salvar evento", e);
+                    Toast.makeText(this, "Erro ao salvar evento!", Toast.LENGTH_SHORT).show();
+                });
     }
     private final ActivityResultLauncher<Intent> selecionarImagem =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),

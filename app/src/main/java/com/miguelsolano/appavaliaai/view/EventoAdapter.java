@@ -1,4 +1,4 @@
-package com.miguelsolano.appavaliaai.model;
+package com.miguelsolano.appavaliaai.view;
 
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.miguelsolano.appavaliaai.R;
+import com.miguelsolano.appavaliaai.model.Eventos;
 
 import java.util.List;
 
@@ -56,11 +57,9 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.EventoView
         // MODALIDADE E TIPO
         holder.modalidade.setText(evento.getModalidade());
         holder.tipo.setText(evento.getTipo());
-
-        // ⭐ AVALIAÇÃO
+        //Avaliação
         holder.avaliacao.setText("⭐ " + evento.getAvaliacao());
 
-        // ⏰ HORÁRIO (CONCATENADO CORRETAMENTE)
         String inicio = evento.getHorarioIN() != null ? evento.getHorarioIN() : "";
         String fim = evento.getHorarioFN() != null ? evento.getHorarioFN() : "";
 
@@ -74,7 +73,7 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.EventoView
 
         holder.horario.setText(horarioFormatado);
 
-        // 🖼️ IMAGEM
+        // IMAGEM
         String uriString = evento.getImagemUri();
 
         try {
